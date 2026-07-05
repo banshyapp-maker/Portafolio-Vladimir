@@ -7,13 +7,13 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-line-strong bg-bg-deep">
-      <div className="edge py-[var(--s-9,96px)]">
-        <div className="grid gap-[var(--s-7,48px)] md:grid-cols-[1.4fr_1fr]">
+    <footer className="border-t border-line bg-bg-deep">
+      <div className="edge py-10">
+        <div className="grid gap-8 md:grid-cols-[1.4fr_1fr]">
           <div>
             <a
               href={`mailto:${site.email}`}
-              className="link-underline font-display text-h3 text-ink"
+              className="font-display text-h3 font-semibold uppercase leading-none text-ink transition-colors hover:text-accent-strong"
             >
               {site.email}
             </a>
@@ -47,7 +47,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-[var(--s-8,64px)] flex flex-col gap-4 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-4 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="eyebrow normal-case tracking-[0.1em]">
             © {year} {site.name} · Diseñado y construido a medida
           </p>

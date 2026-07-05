@@ -4,7 +4,6 @@ import { about } from "@/data/content";
 import { site } from "@/data/site";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Reveal } from "@/components/motion/Reveal";
-import { MagneticLink } from "@/components/motion/MagneticLink";
 import { ContactCTA } from "@/components/home/ContactCTA";
 
 export const metadata: Metadata = {
@@ -15,108 +14,73 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className="edge pt-[calc(var(--header-h)+var(--s-9,96px))] pb-[var(--s-9,96px)]">
-        <p className="eyebrow mb-5">Sobre mí</p>
-        <AnimatedText
-          as="h1"
-          lines={["Construyo sistemas", "para operaciones reales."]}
-          trigger="mount"
-          className="max-w-[18ch] font-display text-h1 font-normal leading-[1.02] text-ink"
-        />
-
-        <Reveal className="mt-[var(--s-8,64px)]">
-          <div className="relative aspect-[21/9] w-full overflow-hidden">
+      <section className="edge pb-8 pt-[calc(var(--header-h)+2rem)] md:pb-16">
+        <div className="screen-panel screen-grid min-h-[76svh]">
+          <div className="absolute inset-y-0 right-0 w-full md:w-[56%]">
             <Image
               src="/images/foto-vladimir.jpg"
-              alt="Retrato profesional"
+              alt={`${site.name} — retrato profesional`}
               fill
-              className="object-cover object-center"
               preload
-              unoptimized
+              sizes="(max-width: 768px) 100vw, 56vw"
+              className="object-cover object-[61%_center] grayscale"
             />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,#0b1013_0%,rgba(11,16,19,.66)_30%,rgba(11,16,19,.06)_72%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(0deg,#0b1013_0%,transparent_55%)] md:hidden" />
           </div>
-        </Reveal>
 
-        <div className="mt-[var(--s-9,96px)] grid gap-x-[var(--col-gap,32px)] gap-y-12 md:grid-cols-12">
-          <div className="md:col-span-7">
-            {/* Circular photo + snapshot */}
-            <div className="mb-8 flex items-center gap-5">
-              <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-full border border-line">
-                <Image
-                  src="/images/Foto-circular.png"
-                  alt={`${site.name} — foto de perfil`}
-                  fill
-                  sizes="64px"
-                  className="object-cover object-center"
-                  unoptimized
-                />
-              </div>
-              <p className="font-display text-[1.05rem] font-normal text-ink-soft">
-                {site.name} · {site.role.split("·")[0].trim()}
-              </p>
+          <div className="relative z-10 flex min-h-[76svh] max-w-[43rem] flex-col justify-between p-7 sm:p-10 lg:p-16">
+            <div>
+              <p className="eyebrow mb-2">Sobre mí</p>
+              <a href={`mailto:${site.email}`} className="font-mono text-[0.68rem] text-muted transition-colors hover:text-ink">
+                {site.email}
+              </a>
             </div>
 
-            <p className="prose-editorial">{about.snapshot}</p>
-            <div className="mt-8 max-w-[62ch] space-y-6">
-              {about.paragraphs.map((p, i) => (
-                <p key={i} className="text-body text-ink-soft">
-                  {p}
-                </p>
+            <div className="max-w-[35rem] py-20 md:py-10">
+              <AnimatedText
+                as="h1"
+                lines={["Ingeniería para", "operaciones reales."]}
+                trigger="mount"
+                className="font-display text-h1 font-semibold uppercase leading-[0.86] text-ink"
+              />
+              <Reveal className="mt-8">
+                <p className="max-w-[52ch] text-small leading-relaxed text-ink-soft">{about.snapshot}</p>
+                <p className="mt-5 max-w-[52ch] text-small leading-relaxed text-muted">{about.paragraphs[0]}</p>
+              </Reveal>
+            </div>
+
+            <div className="flex flex-wrap gap-x-8 gap-y-3 border-t border-white/15 pt-5 font-mono text-[0.65rem] uppercase tracking-[0.1em] text-muted">
+              <span>{site.location}</span>
+              {site.socials.slice(0, 2).map((social) => (
+                <a key={social.label} href={social.href} className="transition-colors hover:text-accent-strong">
+                  {social.label}
+                </a>
               ))}
             </div>
           </div>
-
-          <aside className="md:col-span-4 md:col-start-9">
-            <dl className="space-y-7 border-t border-line pt-8 md:border-t-0 md:pt-1">
-              <div>
-                <dt className="eyebrow mb-2">Ubicación</dt>
-                <dd className="text-ink">{site.location}</dd>
-              </div>
-              <div>
-                <dt className="eyebrow mb-2">Contacto</dt>
-                <dd>
-                  <a href={`mailto:${site.email}`} className="link-underline text-ink">
-                    {site.email}
-                  </a>
-                </dd>
-              </div>
-              <div>
-                <dt className="eyebrow mb-2">Redes</dt>
-                <dd className="flex flex-wrap gap-4">
-                  {site.socials
-                    .filter((s) => s.label !== "Email")
-                    .map((s) => (
-                      <MagneticLink
-                        key={s.label}
-                        href={s.href}
-                        underline
-                        className="font-mono text-caption uppercase tracking-[0.14em] text-ink-soft"
-                      >
-                        {s.label}
-                      </MagneticLink>
-                    ))}
-                </dd>
-              </div>
-            </dl>
-          </aside>
         </div>
       </section>
 
-      <section aria-label="Cómo trabajo" className="border-t border-line bg-bg-deep">
-        <div className="edge py-[var(--s-10,128px)]">
-          <Reveal className="mb-12">
-            <p className="eyebrow mb-3">Cómo trabajo</p>
-            <h2 className="font-display text-h2 font-normal text-ink">Principios</h2>
+      <section aria-label="Cómo trabajo" className="edge pb-8 md:pb-16">
+        <div className="screen-panel p-7 sm:p-10 lg:p-16">
+          <Reveal className="mb-12 flex items-end justify-between gap-8 border-b border-line-strong pb-5">
+            <div>
+              <p className="eyebrow mb-3">Cómo trabajo</p>
+              <h2 className="font-display text-h2 font-semibold uppercase leading-none text-ink">Principios</h2>
+            </div>
+            <span className="hidden font-mono text-caption text-muted md:block">01 — 03</span>
           </Reveal>
-          <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
-            {about.principles.map((p, i) => (
-              <div key={p.title} className="flex flex-col bg-bg-deep p-8">
-                <span className="font-mono text-caption text-accent">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-4 font-display text-h3 font-normal text-ink">{p.title}</h3>
-                <p className="mt-2 text-ink-soft">{p.body}</p>
-              </div>
+
+          <div className="grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
+            {about.principles.map((principle, index) => (
+              <article key={principle.title} className="flex min-h-72 flex-col bg-surface-sunk p-7">
+                <span className="font-mono text-caption text-accent-strong">0{index + 1}</span>
+                <h3 className="mt-auto font-display text-h3 font-semibold uppercase leading-none text-ink">
+                  {principle.title}
+                </h3>
+                <p className="mt-4 text-small leading-relaxed text-muted">{principle.body}</p>
+              </article>
             ))}
           </div>
         </div>

@@ -19,12 +19,12 @@ export function ProjectCard({ project, index, onEnter, onLeave }: ProjectCardPro
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}
         aria-label={`Ver caso de estudio: ${project.title}`}
-        className="group grid grid-cols-[2.5rem_1fr] items-baseline gap-x-4 gap-y-3 py-8 md:grid-cols-[3.5rem_1fr_11rem_10rem] md:py-11"
+        className="group grid grid-cols-[2.5rem_1fr] items-baseline gap-x-4 gap-y-3 py-8 md:grid-cols-[3.5rem_1fr_12rem_9rem] md:py-10"
       >
         <span className="font-mono text-caption text-faint">
           {String(index + 1).padStart(2, "0")}
         </span>
-        <h2 className="font-display text-[clamp(2rem,5vw,3.5rem)] font-normal leading-[1.05] text-ink transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] md:group-hover:translate-x-3">
+        <h2 className="font-display text-[clamp(2.2rem,5vw,4rem)] font-semibold uppercase leading-[0.92] text-ink transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] md:group-hover:translate-x-3 md:group-hover:text-accent-strong">
           {project.title}
         </h2>
         <span className="col-start-2 font-mono text-caption uppercase tracking-[0.14em] text-muted md:col-start-3 md:self-center md:text-right">

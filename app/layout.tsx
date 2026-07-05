@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Newsreader, IBM_Plex_Mono } from "next/font/google";
+import { Barlow_Condensed, Manrope, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/data/site";
 import { Providers } from "@/components/providers/Providers";
@@ -8,18 +8,16 @@ import { Footer } from "@/components/layout/Footer";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { PageLoad } from "@/components/transitions/PageLoad";
 
-const fraunces = Fraunces({
+const barlow = Barlow_Condensed({
   subsets: ["latin"],
-  style: ["normal", "italic"],
-  axes: ["opsz", "SOFT"],
-  variable: "--font-fraunces",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-barlow",
   display: "swap",
 });
 
-const newsreader = Newsreader({
+const manrope = Manrope({
   subsets: ["latin"],
-  style: ["normal", "italic"],
-  variable: "--font-newsreader",
+  variable: "--font-manrope",
   display: "swap",
 });
 
@@ -50,7 +48,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${fraunces.variable} ${newsreader.variable} ${plexMono.variable}`}
+      className={`${barlow.variable} ${manrope.variable} ${plexMono.variable}`}
     >
       <body className="flex min-h-dvh flex-col">
         <SkipLink />

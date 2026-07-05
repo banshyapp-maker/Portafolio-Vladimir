@@ -28,7 +28,7 @@ export function CaseStudyHero({ project }: { project: Project }) {
         as="h1"
         lines={[project.title]}
         trigger="mount"
-        className="font-display text-h1 font-normal leading-[1.0] text-ink"
+        className="font-display text-h1 font-semibold uppercase leading-[0.86] text-ink"
       />
 
       <Reveal className="mt-10">

@@ -1,15 +1,6 @@
 @import "tailwindcss";
 
-/* ------------------------------------------------------------------ *
- * Design tokens
- * Semantic values live in :root as plain CSS variables (used directly
- * in component CSS). @theme inline registers Tailwind utilities that
- * point at them, so `bg-bg`, `text-ink`, `font-display`, `text-h1`...
- * all resolve to the same source of truth.
- * ------------------------------------------------------------------ */
-
 @theme inline {
-  /* colors -> utilities: bg-bg, text-ink, border-line, etc. */
   --color-bg: var(--bg);
   --color-bg-deep: var(--bg-deep);
   --color-surface: var(--surface);
@@ -23,12 +14,10 @@
   --color-accent: var(--accent);
   --color-accent-strong: var(--accent-strong);
 
-  /* fonts -> utilities: font-display, font-text, font-mono */
-  --font-display: var(--font-fraunces);
-  --font-text: var(--font-newsreader);
+  --font-display: var(--font-barlow);
+  --font-text: var(--font-manrope);
   --font-mono: var(--font-plex-mono);
 
-  /* fluid type scale -> utilities: text-caption ... text-mega */
   --text-caption: var(--t-caption);
   --text-caption--line-height: 1.3;
   --text-caption--letter-spacing: 0.08em;
@@ -39,130 +28,98 @@
   --text-lead: var(--t-lead);
   --text-lead--line-height: 1.4;
   --text-h3: var(--t-h3);
-  --text-h3--line-height: 1.16;
-  --text-h3--letter-spacing: -0.01em;
+  --text-h3--line-height: 1.05;
   --text-h2: var(--t-h2);
-  --text-h2--line-height: 1.06;
-  --text-h2--letter-spacing: -0.015em;
+  --text-h2--line-height: 0.96;
   --text-h1: var(--t-h1);
-  --text-h1--line-height: 1.04;
-  --text-h1--letter-spacing: -0.018em;
+  --text-h1--line-height: 0.9;
   --text-mega: var(--t-mega);
-  --text-mega--line-height: 0.95;
-  --text-mega--letter-spacing: -0.03em;
+  --text-mega--line-height: 0.84;
 }
 
 :root {
-  /* ---- palette: warm bone paper, ink-near-black, single ink-blue accent ---- */
-  --bg: #f3efe7;
-  --bg-deep: #ede8de;
-  --surface: #fbf9f4;
-  --surface-sunk: #ece6da;
+  /* ponytail: one palette drives the redesign; no parallel theme system. */
+  --bg: #080b0d;
+  --bg-deep: #050708;
+  --surface: #101519;
+  --surface-sunk: #0b1013;
+  --ink: #f2f5f4;
+  --ink-soft: #c8cecc;
+  --muted: #8b9696;
+  --faint: #596364;
+  --line: #20292d;
+  --line-strong: #354146;
+  --accent: #24a8d3;
+  --accent-strong: #54c4e8;
+  --selection-bg: rgba(36, 168, 211, 0.3);
+  --focus-ring: #54c4e8;
 
-  --ink: #1a1916;
-  --ink-soft: #34322c;
-  --muted: #6b665c;
-  --faint: #9a9488;
+  --t-caption: clamp(0.68rem, 0.66rem + 0.12vw, 0.76rem);
+  --t-small: clamp(0.82rem, 0.79rem + 0.18vw, 0.92rem);
+  --t-body: clamp(0.96rem, 0.92rem + 0.24vw, 1.08rem);
+  --t-lead: clamp(1.08rem, 1rem + 0.5vw, 1.4rem);
+  --t-h3: clamp(1.55rem, 1.2rem + 1.7vw, 2.7rem);
+  --t-h2: clamp(2.35rem, 1.6rem + 3.6vw, 5rem);
+  --t-h1: clamp(3.4rem, 1.8rem + 7.6vw, 9rem);
+  --t-mega: clamp(4.4rem, 1.5rem + 13vw, 12rem);
 
-  --line: #ddd6c8;
-  --line-strong: #c9c0ae;
-
-  --accent: #2b3a4a;
-  --accent-strong: #1f2c3a;
-  --accent-tint: rgba(43, 58, 74, 0.08);
-  --selection-bg: rgba(43, 58, 74, 0.18);
-  --focus-ring: #2b3a4a;
-
-  /* ---- fluid type scale (caption -> mega) ---- */
-  --t-caption: clamp(0.72rem, 0.69rem + 0.15vw, 0.8rem);
-  --t-small: clamp(0.84rem, 0.8rem + 0.2vw, 0.95rem);
-  --t-body: clamp(1rem, 0.95rem + 0.35vw, 1.2rem);
-  --t-lead: clamp(1.25rem, 1.1rem + 0.8vw, 1.7rem);
-  --t-h3: clamp(1.5rem, 1.2rem + 1.4vw, 2.4rem);
-  --t-h2: clamp(2.1rem, 1.5rem + 2.9vw, 4.2rem);
-  --t-h1: clamp(3rem, 1.8rem + 6vw, 7.5rem);
-  --t-mega: clamp(4rem, 2rem + 9.5vw, 11rem);
-
-  /* ---- layout ---- */
-  --maxw: 1280px;
+  --maxw: 1360px;
   --maxw-text: 68ch;
-  --gutter: clamp(20px, 5vw, 80px);
-  --header-h: 76px;
-
-  /* ---- easings (shared with JS via lib/motion + lib/gsap) ---- */
+  --gutter: clamp(20px, 4.5vw, 72px);
+  --header-h: 68px;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
-  --ease-soft: cubic-bezier(0.33, 0, 0.1, 1);
 }
 
-/* ------------------------------------------------------------------ *
- * Base
- * ------------------------------------------------------------------ */
-
 html {
-  -webkit-text-size-adjust: 100%;
+  color-scheme: dark;
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--bg);
+  background:
+    radial-gradient(circle at 72% 4%, rgba(36, 168, 211, 0.1), transparent 26rem),
+    var(--bg);
   color: var(--ink-soft);
-  font-family: var(--font-newsreader), Georgia, serif;
+  font-family: var(--font-manrope), sans-serif;
   font-size: var(--t-body);
   line-height: 1.62;
-  font-synthesis-weight: none;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-/* Paper grain — fixed, decorative, above everything but inert. */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 80;
   pointer-events: none;
-  opacity: 0.045;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 240px 240px;
+  opacity: 0.035;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitchTiles'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 h1, h2, h3, h4 {
-  font-family: var(--font-fraunces), Georgia, serif;
   color: var(--ink);
-  font-weight: 400;
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
   text-wrap: balance;
 }
 
 p { text-wrap: pretty; }
-
-::selection {
-  background: var(--selection-bg);
-  color: var(--ink);
-}
-
-:focus-visible {
-  outline: 2px solid var(--focus-ring);
-  outline-offset: 3px;
-}
-
-::-webkit-scrollbar { width: 10px; height: 10px; }
+::selection { background: var(--selection-bg); color: var(--ink); }
+:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
+::-webkit-scrollbar { width: 9px; height: 9px; }
 ::-webkit-scrollbar-thumb { background: var(--line-strong); }
 ::-webkit-scrollbar-track { background: var(--bg-deep); }
 
-/* Lenis smooth scroll (only active when the provider mounts it) */
-html.lenis,
-html.lenis body { height: auto; }
+html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: hidden; }
 .lenis.lenis-smooth iframe { pointer-events: none; }
-
-/* ------------------------------------------------------------------ *
- * Reusable primitives
- * ------------------------------------------------------------------ */
 
 .edge {
   width: 100%;
@@ -171,83 +128,85 @@ html.lenis body { height: auto; }
   padding-inline: var(--gutter);
 }
 
-/* mono eyebrow / label */
-.eyebrow {
-  font-family: var(--font-plex-mono), ui-monospace, monospace;
+.screen-panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--surface-sunk);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
+}
+
+.screen-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.outline-button {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(242, 245, 244, 0.65);
+  border-radius: 999px;
+  padding-inline: 1.25rem;
+  color: var(--ink);
+  font-family: var(--font-plex-mono), monospace;
   font-size: var(--t-caption);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: 220ms var(--ease-out);
+}
+
+.outline-button:hover, .outline-button:focus-visible {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.eyebrow {
+  color: var(--accent-strong);
+  font-family: var(--font-plex-mono), monospace;
+  font-size: var(--t-caption);
+  font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--muted);
-  font-weight: 500;
 }
 
-/* long-form reading column for case studies */
 .prose-editorial {
   max-width: var(--maxw-text);
+  color: var(--ink-soft);
   font-size: var(--t-lead);
   line-height: 1.55;
-  color: var(--ink-soft);
 }
-.prose-editorial em { font-style: italic; color: var(--ink); }
 
-/* animated underline used by refined links (drawn left->right on hover) */
+.prose-editorial em { color: var(--ink); font-style: italic; }
+
 .link-underline {
   position: relative;
   display: inline;
-  background-image: linear-gradient(var(--accent), var(--accent));
+  background-image: linear-gradient(var(--accent-strong), var(--accent-strong));
   background-position: 0 100%;
   background-repeat: no-repeat;
   background-size: 0% 1px;
   transition: background-size 0.4s var(--ease-out);
 }
-.link-underline:hover,
-.link-underline:focus-visible {
-  background-size: 100% 1px;
-}
 
-/* hairline divider */
+.link-underline:hover, .link-underline:focus-visible { background-size: 100% 1px; }
 .rule { border: 0; border-top: 1px solid var(--line); }
 .rule-strong { border: 0; border-top: 1px solid var(--line-strong); }
 
-/* infinite marquee band — track holds two identical halves, shifts one half */
-@keyframes marquee {
-  to { transform: translateX(-50%); }
-}
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 38s linear infinite;
-}
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee-track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
 .marquee-track:hover { animation-play-state: paused; }
+.line-mask, .word-mask { overflow: hidden; padding-bottom: 0.15em; margin-bottom: -0.15em; }
+.line-mask { display: block; }
+.word-mask { display: inline-block; vertical-align: bottom; }
 
-/* Mask wrappers for reveal text. The padding/negative-margin pair keeps
- * descenders (g, j, y, p) visible at rest while still clipping the rise. */
-.line-mask {
-  display: block;
-  overflow: hidden;
-  padding-bottom: 0.15em;
-  margin-bottom: -0.15em;
-}
-.word-mask {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: bottom;
-  padding-bottom: 0.15em;
-  margin-bottom: -0.15em;
-}
-
-/* ------------------------------------------------------------------ *
- * Reduced motion — belt & suspenders. Components also gate via the
- * useReducedMotion hook / <MotionConfig reducedMotion="user">.
- * ------------------------------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-  }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
   .link-underline { transition: none; }
 }

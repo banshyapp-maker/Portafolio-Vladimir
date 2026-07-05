@@ -44,7 +44,7 @@ export function FeaturedCard({ project, index }: { project: Project; index: numb
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      <article className="grid items-center gap-x-[var(--col-gap,32px)] gap-y-7 md:grid-cols-2">
+      <article className="grid items-center gap-x-10 gap-y-7 md:grid-cols-[1.08fr_.92fr]">
         <div
           ref={mediaRef}
           onMouseMove={onMove}
@@ -119,14 +119,14 @@ export function FeaturedCard({ project, index }: { project: Project; index: numb
             </span>
           </div>
 
-          <h3 className="font-display text-h2 font-normal leading-[1.04] text-ink">
+          <h3 className="font-display text-h2 font-semibold uppercase leading-[0.95] text-ink">
             <span className="relative inline">
               {project.title}
               <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-ink transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
             </span>
           </h3>
 
-          <p className="mt-5 max-w-[42ch] text-lead text-ink-soft">{project.valueProp}</p>
+          <p className="mt-5 max-w-[42ch] text-small leading-relaxed text-ink-soft">{project.valueProp}</p>
 
           <div className="mt-7 flex flex-wrap items-center gap-2">
             {project.technologies.slice(0, 4).map((technology) => (

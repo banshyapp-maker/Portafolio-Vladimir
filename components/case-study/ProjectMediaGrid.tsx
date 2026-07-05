@@ -21,7 +21,7 @@ export function ProjectMediaGrid({ artifacts, seedBase }: ProjectMediaGridProps)
     <section aria-label="Vistas del proyecto" className="edge py-[var(--s-10,128px)]">
       <Reveal className="mb-12">
         <p className="eyebrow mb-3">Galería</p>
-        <h2 className="font-display text-h2 font-normal text-ink">Vistas del proyecto</h2>
+        <h2 className="font-display text-h2 font-semibold uppercase text-ink">Vistas del proyecto</h2>
         <p className="mt-5 max-w-[54ch] text-lead text-ink-soft">
           Pantallas y automatizaciones que forman parte de la solución.
         </p>

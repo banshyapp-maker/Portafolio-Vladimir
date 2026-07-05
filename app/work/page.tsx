@@ -6,30 +6,35 @@ import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
   title: "Proyectos",
-  description:
-    "Proyectos de automatización, RPA e IA aplicada que reducen costos, errores y tiempos operativos.",
+  description: "Proyectos de automatización, RPA e IA aplicada que reducen costos, errores y tiempos operativos.",
 };
 
 export default function WorkPage() {
   return (
-    <div className="edge pt-[calc(var(--header-h)+var(--s-9,96px))] pb-[var(--s-10,128px)]">
-      <header className="mb-[var(--s-9,96px)]">
-        <p className="eyebrow mb-5">Proyectos</p>
-        <AnimatedText
-          as="h1"
-          lines={["Tecnología que convierte", "procesos en resultados."]}
-          trigger="mount"
-          className="font-display text-h1 font-normal leading-[1.02] text-ink"
-        />
-        <Reveal className="mt-8 max-w-[54ch]">
-          <p className="text-lead text-ink-soft">
-            Cada proyecto parte de un reto operativo concreto y termina en una solución que reduce
-            tareas manuales, acelera la información y le da más control al negocio.
-          </p>
-        </Reveal>
-      </header>
+    <div className="edge pb-16 pt-[calc(var(--header-h)+2rem)]">
+      <div className="screen-panel p-7 sm:p-10 lg:p-16">
+        <header className="mb-16 border-b border-line-strong pb-12">
+          <p className="eyebrow mb-5">Portafolio / 2025—2026</p>
+          <AnimatedText
+            as="h1"
+            lines={["Sistemas que convierten", "procesos en resultados."]}
+            trigger="mount"
+            className="max-w-[15ch] font-display text-h1 font-semibold uppercase leading-[0.86] text-ink"
+          />
+          <Reveal className="mt-10 grid gap-8 md:grid-cols-3">
+            <p className="max-w-[48ch] text-small leading-relaxed text-ink-soft md:col-span-2">
+              Cada proyecto parte de un reto operativo concreto y termina en una solución que reduce
+              tareas manuales, acelera la información y le da más control al negocio.
+            </p>
+            <dl className="grid grid-cols-2 gap-5 font-mono text-caption uppercase tracking-[0.1em]">
+              <div><dt className="text-faint">Especialidad</dt><dd className="mt-1 text-ink">Automation + AI</dd></div>
+              <div><dt className="text-faint">Base</dt><dd className="mt-1 text-ink">Panamá</dd></div>
+            </dl>
+          </Reveal>
+        </header>
 
-      <ProjectList projects={allProjects} />
+        <ProjectList projects={allProjects} />
+      </div>
     </div>
   );
 }

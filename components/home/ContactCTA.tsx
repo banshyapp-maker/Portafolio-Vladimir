@@ -8,15 +8,15 @@ export function ContactCTA() {
     <section
       id="contacto"
       aria-label="Contacto"
-      className="border-t border-line-strong bg-bg-deep"
+      className="mt-8 border-t border-line bg-bg-deep"
     >
-      <div className="edge py-[var(--s-11,192px)]">
+      <div className="edge py-24 md:py-32">
         <p className="eyebrow mb-6">{contact.eyebrow}</p>
 
         <AnimatedText
           as="h2"
           lines={["¿Tienes una operación", "que ordenar?"]}
-          className="font-display text-h1 font-normal leading-[1.02] text-ink"
+          className="max-w-[13ch] font-display text-h1 font-semibold uppercase leading-[0.88] text-ink"
         />
 
         <p className="mt-10 max-w-[56ch] text-lead text-ink-soft">{contact.sub}</p>
@@ -24,7 +24,7 @@ export function ContactCTA() {
         <div className="mt-12">
           <a
             href={`mailto:${site.email}`}
-            className="link-underline font-display text-h3 text-ink"
+            className="font-display text-h3 font-semibold uppercase text-ink transition-colors hover:text-accent-strong"
           >
             {site.email}
           </a>

@@ -13,27 +13,28 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="edge pt-[calc(var(--header-h)+var(--s-9,96px))] pb-[var(--s-10,128px)]">
+    <div className="edge pb-16 pt-[calc(var(--header-h)+2rem)]">
+      <div className="screen-panel screen-grid p-7 sm:p-10 lg:p-16">
       <p className="eyebrow mb-6">{contact.eyebrow}</p>
       <AnimatedText
         as="h1"
         lines={["¿Tienes una operación", "que ordenar?"]}
         trigger="mount"
-        className="font-display text-h1 font-normal leading-[1.02] text-ink"
+        className="max-w-[12ch] font-display text-h1 font-semibold uppercase leading-[0.86] text-ink"
       />
 
       <Reveal className="mt-8 max-w-[56ch]">
-        <p className="text-lead text-ink-soft">{contact.sub}</p>
+        <p className="text-small leading-relaxed text-ink-soft">{contact.sub}</p>
       </Reveal>
 
-      <div className="mt-[var(--s-9,96px)] grid gap-x-[var(--col-gap,32px)] gap-y-16 border-t border-line pt-12 md:grid-cols-12">
+      <div className="mt-16 grid gap-x-10 gap-y-16 border-t border-line pt-12 md:grid-cols-12">
         <div className="md:col-span-7">
           <ContactForm />
         </div>
 
         <aside className="md:col-span-4 md:col-start-9">
           <p className="eyebrow mb-5">Contacto directo</p>
-          <a href={`mailto:${site.email}`} className="link-underline font-display text-xl text-ink">
+          <a href={`mailto:${site.email}`} className="font-display text-2xl font-semibold uppercase text-ink transition-colors hover:text-accent-strong">
             {site.email}
           </a>
 
@@ -57,9 +58,10 @@ export default function ContactPage() {
         </aside>
       </div>
 
-      <p className="eyebrow mt-[var(--s-10,128px)] text-faint">
+      <p className="eyebrow mt-20 text-faint">
         Diseñado y construido a medida · 2026
       </p>
+      </div>
     </div>
   );
 }

@@ -86,18 +86,18 @@ export function MobileMenu() {
         aria-controls="mobile-menu"
         aria-label={open ? "Cerrar menú" : "Abrir menú"}
         onClick={() => setOpen((v) => !v)}
-        className="relative z-[95] flex h-10 w-10 items-center justify-center"
+        className="fixed right-5 top-[14px] z-[100] flex h-10 w-10 items-center justify-center"
       >
         <span
           className={cn(
             "absolute h-px w-6 transition-all duration-300",
-            open ? "rotate-45 bg-bg" : "-translate-y-[3px] bg-ink",
+            open ? "rotate-45 bg-ink" : "-translate-y-[3px] bg-ink",
           )}
         />
         <span
           className={cn(
             "absolute h-px w-6 transition-all duration-300",
-            open ? "-rotate-45 bg-bg" : "translate-y-[3px] bg-ink",
+            open ? "-rotate-45 bg-ink" : "translate-y-[3px] bg-ink",
           )}
         />
       </button>
@@ -110,7 +110,7 @@ export function MobileMenu() {
             role="dialog"
             aria-modal="true"
             aria-label="Menú de navegación"
-            className="fixed inset-0 z-[90] flex flex-col bg-ink text-bg"
+            className="fixed inset-0 z-[90] flex flex-col bg-bg-deep text-ink"
             variants={reduced ? undefined : panelVariants}
             initial={reduced ? { opacity: 0 } : "hidden"}
             animate={reduced ? { opacity: 1 } : "show"}
@@ -118,7 +118,7 @@ export function MobileMenu() {
             transition={{ duration: reduced ? 0.2 : 0.6, ease: EASE_INOUT }}
           >
             <div className="edge flex h-[var(--header-h)] items-center">
-              <span className="font-display text-lg text-bg">{site.name}</span>
+              <span className="font-mono text-caption uppercase tracking-[0.18em] text-ink">VC.</span>
             </div>
 
             <motion.ul
@@ -134,7 +134,7 @@ export function MobileMenu() {
                     <Link
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className="font-display text-[clamp(2.5rem,12vw,4.5rem)] leading-[1.04] text-bg"
+                      className="font-display text-[clamp(2.5rem,12vw,4.5rem)] font-semibold uppercase leading-[0.95] text-ink"
                     >
                       <span className="mr-4 align-super font-mono text-[0.9rem] text-bg/40">
                         0{i + 1}
@@ -151,7 +151,7 @@ export function MobileMenu() {
                 <a
                   key={s.label}
                   href={s.href}
-                  className="link-underline font-mono text-caption uppercase tracking-[0.14em] text-bg/70"
+                  className="link-underline font-mono text-caption uppercase tracking-[0.14em] text-muted"
                 >
                   {s.label}
                 </a>

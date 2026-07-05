@@ -7,7 +7,7 @@ export function ProjectOverview({ project }: { project: Project }) {
       <div className="grid gap-x-[var(--col-gap,32px)] gap-y-12 md:grid-cols-12">
         <Reveal className="md:col-span-7">
           <p className="eyebrow mb-5">Resumen del proyecto</p>
-          <h2 className="font-display text-h2 font-normal leading-[1.08] text-ink">
+          <h2 className="font-display text-h2 font-semibold uppercase leading-[0.94] text-ink">
             {project.valueProp}
           </h2>
           <p className="mt-8 text-lead leading-relaxed text-ink-soft">{project.solution}</p>
@@ -28,7 +28,7 @@ export function ProjectOverview({ project }: { project: Project }) {
       <div className="mt-[var(--s-10,128px)]">
         <Reveal className="mb-12 max-w-[58ch]">
           <p className="eyebrow mb-3">Funcionalidades principales</p>
-          <h2 className="font-display text-h2 font-normal text-ink">
+          <h2 className="font-display text-h2 font-semibold uppercase text-ink">
             Lo que hace la solución
           </h2>
         </Reveal>
@@ -48,7 +48,7 @@ export function ProjectOverview({ project }: { project: Project }) {
                   className="h-3 w-3 rounded-full border border-line-strong transition-colors duration-300 group-hover:bg-ink"
                 />
               </div>
-              <h3 className="font-display text-h3 font-normal leading-[1.1] text-ink">
+              <h3 className="font-display text-h3 font-semibold uppercase leading-none text-ink">
                 {feature.title}
               </h3>
               <p className="mt-4 text-small leading-relaxed text-ink-soft">

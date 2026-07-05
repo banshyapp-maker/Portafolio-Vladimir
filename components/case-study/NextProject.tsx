@@ -12,7 +12,7 @@ export function NextProject({ currentSlug }: { currentSlug: string }) {
         <div className="edge py-[var(--s-10,128px)]">
           <p className="eyebrow mb-5">Siguiente proyecto</p>
           <div className="flex items-baseline justify-between gap-6">
-            <h2 className="font-display text-h1 font-normal leading-[1.0] text-ink">
+            <h2 className="font-display text-h1 font-semibold uppercase leading-[0.86] text-ink">
               <span className="relative inline">
                 {next.title}
                 <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-ink transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
