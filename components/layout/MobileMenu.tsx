@@ -118,7 +118,7 @@ export function MobileMenu() {
             transition={{ duration: reduced ? 0.2 : 0.6, ease: EASE_INOUT }}
           >
             <div className="edge flex h-[var(--header-h)] items-center">
-              <span className="font-mono text-caption uppercase tracking-[0.18em] text-ink">VC.</span>
+              <span className="font-mono text-caption uppercase tracking-[0.18em] text-ink">Vladimir Cornejo</span>
             </div>
 
             <motion.ul
@@ -147,7 +147,7 @@ export function MobileMenu() {
             </motion.ul>
 
             <div className="edge mb-[7vh] flex flex-wrap gap-x-6 gap-y-2">
-              {site.socials.map((s) => (
+              {site.socials.filter((s) => s.label !== "WhatsApp").map((s) => (
                 <a
                   key={s.label}
                   href={s.href}

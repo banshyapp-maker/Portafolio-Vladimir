@@ -30,17 +30,9 @@ export function Header() {
           aria-label={`${site.name} — inicio`}
           className="font-mono text-caption uppercase tracking-[0.18em] text-ink"
         >
-          VC<span className="text-accent">.</span>
+          Vladimir Cornejo
         </Link>
-        <div className="flex items-center gap-8">
-          <Navigation />
-          <a
-            href="https://wa.me/50768384242"
-            className="hidden font-mono text-[0.65rem] tracking-[0.08em] text-muted transition-colors hover:text-accent-strong lg:block"
-          >
-            +507 6838-4242
-          </a>
-        </div>
+        <Navigation />
         <MobileMenu />
       </div>
     </header>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Barlow_Condensed, Manrope, IBM_Plex_Mono } from "next/font/google";
+import { Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import { site } from "@/data/site";
 import { Providers } from "@/components/providers/Providers";
@@ -12,19 +12,6 @@ const barlow = Barlow_Condensed({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-barlow",
-  display: "swap",
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-manrope",
-  display: "swap",
-});
-
-const plexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-plex-mono",
   display: "swap",
 });
 
@@ -48,7 +35,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${barlow.variable} ${manrope.variable} ${plexMono.variable}`}
+      className={barlow.variable}
     >
       <body className="flex min-h-dvh flex-col">
         <SkipLink />

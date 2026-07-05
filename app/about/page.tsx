@@ -52,11 +52,14 @@ export default function AboutPage() {
 
             <div className="flex flex-wrap gap-x-8 gap-y-3 border-t border-white/15 pt-5 font-mono text-[0.65rem] uppercase tracking-[0.1em] text-muted">
               <span>{site.location}</span>
-              {site.socials.slice(0, 2).map((social) => (
+              {site.socials
+                .filter((social) => social.label !== "WhatsApp")
+                .slice(0, 2)
+                .map((social) => (
                 <a key={social.label} href={social.href} className="transition-colors hover:text-accent-strong">
                   {social.label}
                 </a>
-              ))}
+                ))}
             </div>
           </div>
         </div>

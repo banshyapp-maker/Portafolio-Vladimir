@@ -120,7 +120,9 @@ export function Hero() {
 
           <div className="flex flex-col gap-5 border-t border-white/15 pt-5 sm:flex-row sm:items-end sm:justify-between">
             <div className="flex flex-wrap gap-x-5 gap-y-2">
-              {site.socials.slice(0, 3).map((social) => (
+              {site.socials
+                .filter((social) => social.label !== "WhatsApp" && social.label !== "Email")
+                .map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
@@ -128,7 +130,7 @@ export function Hero() {
                 >
                   {social.label}
                 </a>
-              ))}
+                ))}
             </div>
             <p className="font-mono text-[0.64rem] uppercase tracking-[0.1em] text-muted">
               {site.location}{time ? ` · ${time} GMT−5` : ""}

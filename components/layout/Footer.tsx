@@ -32,7 +32,7 @@ export function Footer() {
               ))}
             </nav>
             <ul className="flex flex-wrap gap-6 md:justify-end">
-              {site.socials.map((s) => (
+              {site.socials.filter((s) => s.label !== "WhatsApp").map((s) => (
                 <li key={s.label}>
                   <MagneticLink
                     href={s.href}
