@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className="edge pb-8 pt-[calc(var(--header-h)+2rem)] md:pb-16">
-        <div className="screen-panel screen-grid min-h-[76svh]">
+      <section className="bg-surface-sunk pt-[var(--header-h)]">
+        <div className="screen-grid relative isolate min-h-[calc(100svh-var(--header-h))] overflow-hidden">
           <div className="absolute inset-y-0 right-0 w-full md:w-[56%]">
             <Image
               src="/images/foto-vladimir.jpg"
@@ -29,7 +29,7 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-[linear-gradient(0deg,#0b1013_0%,transparent_55%)] md:hidden" />
           </div>
 
-          <div className="relative z-10 flex min-h-[76svh] max-w-[43rem] flex-col justify-between p-7 sm:p-10 lg:p-16">
+          <div className="relative z-10 flex min-h-[calc(100svh-var(--header-h))] max-w-[43rem] flex-col justify-between px-[var(--gutter)] py-10 lg:py-16">
             <div>
               <p className="eyebrow mb-2">Sobre mí</p>
               <a href={`mailto:${site.email}`} className="font-mono text-[0.68rem] text-muted transition-colors hover:text-ink">
@@ -62,8 +62,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section aria-label="Cómo trabajo" className="edge pb-8 md:pb-16">
-        <div className="screen-panel p-7 sm:p-10 lg:p-16">
+      <section aria-label="Cómo trabajo" className="border-y border-line bg-bg-deep">
+        <div className="edge py-20 md:py-28">
           <Reveal className="mb-12 flex items-end justify-between gap-8 border-b border-line-strong pb-5">
             <div>
               <p className="eyebrow mb-3">Cómo trabajo</p>

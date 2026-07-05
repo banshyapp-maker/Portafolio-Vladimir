@@ -128,15 +128,6 @@ html.lenis, html.lenis body { height: auto; }
   padding-inline: var(--gutter);
 }
 
-.screen-panel {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  background: var(--surface-sunk);
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
-}
-
 .screen-grid {
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),

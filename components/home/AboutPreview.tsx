@@ -6,8 +6,8 @@ import { Reveal } from "@/components/motion/Reveal";
 
 export function AboutPreview() {
   return (
-    <section aria-label="Sobre mí" className="edge py-8 md:py-16">
-      <div className="screen-panel screen-grid min-h-[70svh]">
+    <section aria-label="Sobre mí" className="border-b border-line bg-surface-sunk">
+      <div className="screen-grid relative isolate min-h-[70svh] overflow-hidden">
         <div className="absolute inset-y-0 right-0 w-full md:w-[58%]">
           <Image
             src="/images/foto-vladimir.jpg"

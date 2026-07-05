@@ -6,8 +6,8 @@ import { MagneticLink } from "@/components/motion/MagneticLink";
 
 export function SelectedWork() {
   return (
-    <section id="trabajo" aria-label="Portafolio" className="edge py-8 md:py-16">
-      <div className="screen-panel p-7 sm:p-10 lg:p-16">
+    <section id="trabajo" aria-label="Portafolio" className="border-b border-line bg-surface-sunk">
+      <div className="edge py-20 md:py-28">
       <Reveal className="mb-14 flex items-end justify-between gap-8 border-b border-line-strong pb-5">
         <AnimatedText
           as="h2"

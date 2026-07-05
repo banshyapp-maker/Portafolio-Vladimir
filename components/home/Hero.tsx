@@ -33,8 +33,8 @@ export function Hero() {
   const time = usePanamaTime();
 
   return (
-    <section aria-labelledby="hero-title" className="edge pt-[var(--header-h)] md:pb-8">
-      <div className="screen-panel min-h-[calc(100svh-var(--header-h)-2rem)] bg-bg-deep">
+    <section aria-labelledby="hero-title" className="relative min-h-svh w-full overflow-hidden bg-bg-deep">
+      <div className="absolute inset-0">
         <motion.div
           className="absolute inset-0"
           initial={reduced ? false : { scale: 1.05, opacity: 0.55 }}
@@ -42,19 +42,20 @@ export function Hero() {
           transition={{ duration: 1.4, ease: EASE_OUT }}
         >
           <Image
-            src="/images/foto-vladimir.jpg"
-            alt={`${site.name} — retrato`}
+            src="/images/workspace-hero.jpg"
+            alt="Espacio de trabajo oscuro con escritorio, monitor y laptop"
             fill
             preload
-            sizes="(max-width: 1360px) 100vw, 1360px"
-            className="object-cover object-[53%_center] grayscale"
+            sizes="100vw"
+            className="object-cover object-center"
           />
         </motion.div>
 
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,7,8,.96)_0%,rgba(4,7,8,.75)_32%,rgba(4,7,8,.18)_64%,rgba(4,7,8,.65)_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(4,7,8,.86)_0%,transparent_45%,rgba(4,7,8,.26)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,7,8,.9)_0%,rgba(4,7,8,.68)_28%,rgba(4,7,8,.12)_65%,rgba(4,7,8,.34)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(4,7,8,.84)_0%,transparent_46%,rgba(4,7,8,.42)_100%)]" />
+      </div>
 
-        <div className="relative z-10 flex min-h-[calc(100svh-var(--header-h)-2rem)] flex-col justify-between p-6 sm:p-10 lg:p-14">
+        <div className="relative z-10 flex min-h-svh flex-col justify-between px-[var(--gutter)] pb-7 pt-[calc(var(--header-h)+2rem)] sm:pb-10 lg:pb-12">
           <motion.p
             className="eyebrow mt-5"
             initial={reduced ? false : { opacity: 0, y: -8 }}
@@ -64,7 +65,7 @@ export function Hero() {
             {hero.eyebrow}
           </motion.p>
 
-          <div className="max-w-[34rem] py-16">
+          <div className="max-w-[34rem] py-12">
             <motion.p
               className="font-display text-[clamp(1.35rem,2.2vw,2.1rem)] uppercase leading-none tracking-[0.08em] text-ink-soft"
               initial={reduced ? false : { opacity: 0, y: 18 }}
@@ -118,7 +119,6 @@ export function Hero() {
             </p>
           </div>
         </div>
-      </div>
     </section>
   );
 }

@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="edge pb-16 pt-[calc(var(--header-h)+2rem)]">
-      <div className="screen-panel screen-grid p-7 sm:p-10 lg:p-16">
+    <div className="screen-grid bg-surface-sunk pt-[var(--header-h)]">
+      <div className="edge py-16 lg:py-24">
       <p className="eyebrow mb-6">{contact.eyebrow}</p>
       <AnimatedText
         as="h1"
