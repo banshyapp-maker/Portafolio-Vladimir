@@ -62,7 +62,7 @@ export function Hero() {
               tabIndex={-1}
               className="absolute inset-0 h-full w-full object-cover object-center"
             >
-              <source src="/videos/hero-background.mp4" type="video/mp4" />
+              <source src="/videos/hero-background.mp4?v=desktop" type="video/mp4" />
             </video>
           )}
         </motion.div>
