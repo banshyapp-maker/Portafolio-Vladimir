@@ -41,14 +41,30 @@ export function Hero() {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.4, ease: EASE_OUT }}
         >
-          <Image
-            src="/images/workspace-hero.jpg"
-            alt="Espacio de trabajo oscuro con escritorio, monitor y laptop"
-            fill
-            preload
-            sizes="100vw"
-            className="object-cover object-center"
-          />
+          {reduced ? (
+            <Image
+              src="/images/hero-video-poster.jpeg"
+              alt="Código y métricas digitales superpuestos sobre un teclado"
+              fill
+              preload
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+          ) : (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              poster="/images/hero-video-poster.jpeg"
+              aria-hidden="true"
+              tabIndex={-1}
+              className="absolute inset-0 h-full w-full object-cover object-center"
+            >
+              <source src="/videos/hero-background.mp4" type="video/mp4" />
+            </video>
+          )}
         </motion.div>
 
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,7,8,.9)_0%,rgba(4,7,8,.68)_28%,rgba(4,7,8,.12)_65%,rgba(4,7,8,.34)_100%)]" />
