@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function WorkPage() {
   return (
-    <div className="bg-surface-sunk pt-[var(--header-h)]">
+    <div className="screen-grid bg-surface-sunk pt-[var(--header-h)]">
       <div className="edge py-16 lg:py-24">
         <header className="mb-16 border-b border-line-strong pb-12">
           <p className="eyebrow mb-5">Portafolio / 2025—2026</p>
