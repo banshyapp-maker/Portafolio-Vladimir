@@ -73,10 +73,6 @@ export default function AboutPage() {
                 <dd className="text-ink">{site.location}</dd>
               </div>
               <div>
-                <dt className="eyebrow mb-2">Disponibilidad</dt>
-                <dd className="text-ink">{site.availability}</dd>
-              </div>
-              <div>
                 <dt className="eyebrow mb-2">Contacto</dt>
                 <dd>
                   <a href={`mailto:${site.email}`} className="link-underline text-ink">

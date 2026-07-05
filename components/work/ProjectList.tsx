@@ -61,6 +61,8 @@ export function ProjectList({ projects }: { projects: Project[] }) {
             aspect="4/3"
             tint="accent"
             kind={preview.artifacts[0]?.kind ?? "image"}
+            src={preview.artifacts[0]?.src}
+            fit={preview.artifacts[0]?.src ? "contain" : "cover"}
           />
         </motion.div>
       )}

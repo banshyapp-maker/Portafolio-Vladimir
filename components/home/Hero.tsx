@@ -86,7 +86,7 @@ export function Hero() {
           >
             {site.location}
             <span className="text-muted">
-              {time ? ` · ${time} GMT−5` : ""} · {site.availability}
+              {time ? ` · ${time} GMT−5` : ""}
             </span>
           </motion.p>
 

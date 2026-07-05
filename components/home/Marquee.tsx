@@ -1,6 +1,6 @@
 const ITEMS = [
   "Automatización",
-  "Gestión documental",
+  "RPA",
   "IA aplicada",
   "Dashboards",
   "Integraciones",

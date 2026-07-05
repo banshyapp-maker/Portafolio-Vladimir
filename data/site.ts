@@ -4,15 +4,19 @@ export const site: SiteConfig = {
   name: "Vladimir Cornejo",
   role: "Application Engineer · Automation & AI Solutions",
   shortBio:
-    "Automatización, gestión documental y analítica de extremo a extremo: documentos, facturas y datos que se procesan solos.",
+    "Automatización, RPA e IA aplicada para reducir tareas manuales, conectar datos y darle más control a cada operación.",
   email: "vcornejo0297@gmail.com",
   location: "Panamá, Panamá",
-  availability: "Disponible para proyectos",
   socials: [
     {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/vladimir-cornejo",
       handle: "/in/vladimir-cornejo",
+    },
+    {
+      label: "WhatsApp",
+      href: "https://wa.me/50768384242",
+      handle: "+507 6838-4242",
     },
     { label: "GitHub", href: "#", handle: "@vcornejo" }, // PLACEHOLDER — añade tu URL de GitHub
     { label: "Email", href: "mailto:vcornejo0297@gmail.com", handle: "vcornejo0297@gmail.com" },

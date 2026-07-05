@@ -5,46 +5,83 @@ import type { Project } from "@/types";
  * `featured: true` lo muestra en "Selected Work" del Home.
  * Arkivoo es el caso de estudio completo; el resto está estructurado y listo
  * para profundizar.
+ * Arkivoo es agnóstico al tipo documental; la demo usa facturas solo como ejemplo.
  */
 export const projects: Project[] = [
   {
     slug: "arkivoo",
     title: "Arkivoo",
     category: "Gestión documental",
-    valueProp: "Archivadores digitales a medida para encontrar cualquier documento en segundos.",
-    stack: ["FastAPI", "Supabase", "PostgreSQL", "Jinja2", "Vercel"],
+    valueProp: "Centraliza documentos, automatiza formularios y flujos de aprobación, y controla cada proceso desde una sola plataforma.",
+    technologies: [
+      {
+        name: "FastAPI",
+        category: "Backend y API",
+        description:
+          "Gestiona la lógica de negocio, la validación de datos y los endpoints protegidos que conectan Arkivoo con automatizaciones externas.",
+      },
+      {
+        name: "PostgreSQL + Supabase",
+        category: "Datos",
+        description:
+          "Almacena documentos, usuarios y metadatos en un modelo relacional preparado para búsquedas rápidas, filtros combinados y crecimiento operativo.",
+      },
+      {
+        name: "Supabase Storage",
+        category: "Archivos",
+        description:
+          "Mantiene los documentos en almacenamiento privado y controla su consulta mediante accesos temporales y seguros.",
+      },
+      {
+        name: "Jinja2",
+        category: "Interfaz web",
+        description:
+          "Renderiza formularios y vistas orientadas al proceso con una experiencia rápida, clara y consistente para el usuario.",
+      },
+      {
+        name: "Vercel",
+        category: "Despliegue",
+        description:
+          "Publica la aplicación en una infraestructura serverless con despliegues repetibles y una operación simplificada.",
+      },
+    ],
     year: "2026",
     status: "En producción",
     role: "Diseño de producto, arquitectura y desarrollo full-stack",
     problem:
-      "Las facturas y documentos vivían en carpetas, correos y discos sin un criterio común. Buscar un comprobante implicaba abrir archivos uno por uno, y cada persona archivaba a su manera. No había forma fiable de saber qué se tenía ni de recuperarlo rápido.",
+      "Los documentos estaban dispersos entre carpetas, correos y discos, sin una estructura común para clasificarlos ni seguir su estado. Buscar un archivo implicaba revisar ubicaciones y criterios distintos, y la operación no tenía una vista confiable de qué existía, dónde estaba ni en qué etapa del proceso se encontraba.",
     solution:
-      "Arkivoo crea archivadores digitales a medida, cada uno con sus propios campos (texto, número, moneda, fecha, selección). Los documentos entran con metadatos —manualmente o capturados por automatización externa— y se vuelven buscables al instante por proveedor, categoría, fecha, estado o número. Roles admin/usuario, panel con indicadores y previsualización integrada.",
-    flow: [
+      "Arkivoo centraliza documentos y procesos en una sola plataforma. Permite crear formularios web y archivadores a medida, automatizar la captura y clasificación de documentos, asignar estados y consultar cada registro en segundos. Incluye roles, trazabilidad, panel de indicadores y previsualización integrada para mantener la operación bajo control.",
+    features: [
       {
-        n: 1,
-        title: "Captura",
-        detail: "Ingesta vía formulario o API protegida (X-API-Key) que recibe facturas extraídas por automatización externa.",
+        title: "Archivadores configurables",
+        description:
+          "Cada operación define sus propios campos de texto, fecha, moneda, número o selección sin depender de una estructura genérica.",
       },
       {
-        n: 2,
-        title: "Estructura",
-        detail: "Cada documento se indexa con los campos del archivador; el archivo va a Storage privado.",
+        title: "Formularios web",
+        description:
+          "La captura se adapta al tipo de documento y valida la información antes de incorporarla al archivo digital.",
       },
       {
-        n: 3,
-        title: "Indexación",
-        detail: "Postgres con índices por metadato y función de panel para contadores agregados.",
+        title: "Automatización documental",
+        description:
+          "Una API protegida recibe documentos y metadatos desde flujos externos para reducir la carga manual.",
       },
       {
-        n: 4,
-        title: "Búsqueda",
-        detail: "Filtros combinados y paginación; resultados en segundos.",
+        title: "Búsqueda multicampo",
+        description:
+          "Proveedor, categoría, fecha, estado o número pueden combinarse para localizar un documento en segundos.",
       },
       {
-        n: 5,
-        title: "Consulta",
-        detail: "Detalle con metadatos y previsualización/descarga con URL firmada.",
+        title: "Procesos y estados",
+        description:
+          "Cada registro puede avanzar por estados definidos, facilitando el seguimiento de pendientes y responsables.",
+      },
+      {
+        title: "Control y trazabilidad",
+        description:
+          "Roles, historial de acciones, indicadores y previsualización permiten supervisar la operación desde un solo lugar.",
       },
     ],
     artifacts: [
@@ -85,17 +122,6 @@ export const projects: Project[] = [
         src: "/images/arkivo/archivar-2.png",
       },
     ],
-    impact: [
-      { value: "−85%", label: "Tiempo de búsqueda", note: "de minutos a segundos" },
-      { value: "<3s", label: "Recuperación de un documento", note: "por metadato indexado" },
-      { value: "−70%", label: "Pasos manuales de archivado", note: "captura asistida" },
-      { value: "−60%", label: "Errores de clasificación", note: "campos validados" },
-      { value: "100%", label: "Trazabilidad", note: "auditoría de cada acción, por usuario e IP" },
-      { value: "1", label: "Repositorio único", note: "todo el archivo en un solo lugar" },
-    ],
-    learnings:
-      "Definir bien los campos del archivador es el 80% del valor: la búsqueda solo es tan buena como sus metadatos. Mantener un único punto de entrada simplificó el despliegue serverless.",
-    next: "Búsqueda full-text sobre el contenido del PDF, OCR en la ingesta y alertas por vencimiento de documentos.",
     featured: true,
   },
 
@@ -103,21 +129,77 @@ export const projects: Project[] = [
     slug: "invoice-pipeline",
     title: "Invoice Pipeline",
     category: "Automatización",
-    valueProp: "De documento en bruto a dato estructurado y reporte, sin intervención manual.",
-    stack: ["n8n", "Supabase", "Airtable", "OCR / IA", "BI"],
+    valueProp: "Convierte facturas en datos confiables y reportes actualizados sin digitación manual, para cerrar más rápido y decidir mejor.",
+    technologies: [
+      {
+        name: "n8n",
+        category: "Orquestación",
+        description:
+          "Coordina la recepción, validación, extracción, registro y notificación de cada factura dentro de un único flujo automatizado.",
+      },
+      {
+        name: "OCR + IA aplicada",
+        category: "Extracción inteligente",
+        description:
+          "Interpreta documentos no estructurados y convierte campos como proveedor, fecha, número y total en datos utilizables.",
+      },
+      {
+        name: "Supabase",
+        category: "Base de datos",
+        description:
+          "Conserva la información procesada en una estructura centralizada, consultable y preparada para integraciones posteriores.",
+      },
+      {
+        name: "Airtable",
+        category: "Operación",
+        description:
+          "Ofrece una vista accesible para seguimiento, revisión y control de los registros que requieren intervención humana.",
+      },
+      {
+        name: "Business Intelligence",
+        category: "Analítica",
+        description:
+          "Transforma los registros procesados en indicadores de facturación que se actualizan sin consolidaciones manuales.",
+      },
+    ],
     year: "2026",
     status: "En producción",
     role: "Diseño e implementación del pipeline",
     problem:
       "La digitación de facturas era manual, lenta y propensa a error; los datos llegaban tarde a quien debía decidir.",
     solution:
-      "Pipeline de extremo a extremo: intake del documento, extracción de campos, validación, carga estructurada y reportes de BI actualizados automáticamente.",
-    flow: [
-      { n: 1, title: "Intake", detail: "Recepción por correo, carpeta o API." },
-      { n: 2, title: "Extracción", detail: "OCR y parsing de campos clave a JSON." },
-      { n: 3, title: "Validación", detail: "Reglas de consistencia y nivel de confianza." },
-      { n: 4, title: "Carga", detail: "Inserción estructurada en la base de datos." },
-      { n: 5, title: "Reporte", detail: "BI se refresca con los nuevos registros." },
+      "Una solución de extremo a extremo que recibe cada factura, extrae sus datos con IA, valida la información y la registra automáticamente. El equipo reduce horas de digitación y obtiene reportes actualizados para dar seguimiento a la facturación sin esperar cierres manuales.",
+    features: [
+      {
+        title: "Recepción automática",
+        description:
+          "El flujo detecta nuevas facturas desde el correo y obtiene sus archivos adjuntos sin intervención manual.",
+      },
+      {
+        title: "Lectura inteligente",
+        description:
+          "OCR e IA extraen los campos relevantes y los convierten en una estructura lista para validar y registrar.",
+      },
+      {
+        title: "Validación de confianza",
+        description:
+          "Las reglas de negocio separan los documentos confiables de aquellos que necesitan una revisión humana.",
+      },
+      {
+        title: "Registro sincronizado",
+        description:
+          "Los datos aprobados se distribuyen a las herramientas operativas sin volver a digitarlos entre sistemas.",
+      },
+      {
+        title: "Notificaciones",
+        description:
+          "El equipo recibe confirmaciones o alertas según el resultado del procesamiento de cada documento.",
+      },
+      {
+        title: "Información para decidir",
+        description:
+          "La información consolidada alimenta reportes de facturación y mantiene los indicadores al día.",
+      },
     ],
     artifacts: [
       {
@@ -157,131 +239,80 @@ export const projects: Project[] = [
         src: "/images/invoice-pipeline/notificacion-exito.png",
       },
     ],
-    impact: [
-      { value: "−90%", label: "Digitación manual" },
-      { value: "~95%", label: "Precisión de extracción" },
-      { value: "min → seg", label: "Latencia del dato disponible" },
-      { value: "−50%", label: "Costo de procesamiento" },
-      { value: "0", label: "Reescritura entre sistemas" },
-      { value: "24/7", label: "Procesamiento desatendido" },
-    ],
-    learnings:
-      "Un umbral de confianza explícito evita propagar errores: lo dudoso va a revisión humana en lugar de contaminar la base.",
-    next: "Conciliación automática y detección de duplicados.",
     featured: true,
-  },
-
-  {
-    slug: "docuware-hr-archive",
-    title: "DocuWare HR Archive",
-    category: "Estrategia documental",
-    valueProp: "Archivo de RR.HH. con menos campos, mejor búsqueda y captura más usable.",
-    stack: ["DocuWare", "Diseño de índices", "API REST"],
-    year: "2025",
-    status: "En producción",
-    role: "Arquitectura de indexación y rediseño de captura",
-    problem:
-      "El gabinete de RR.HH. tenía demasiados campos de índice; capturar era tedioso y buscar, inconsistente.",
-    solution:
-      "Rediseño del esquema: minimizar campos a los que realmente se buscan, normalizar valores y simplificar la pantalla de captura para que sea rápida y a prueba de error.",
-    flow: [
-      { n: 1, title: "Auditoría", detail: "Inventario de campos y patrones de búsqueda reales." },
-      { n: 2, title: "Reducción", detail: "Eliminar o combinar campos sin valor de recuperación." },
-      { n: 3, title: "Normalización", detail: "Listas de selección y formatos consistentes." },
-      { n: 4, title: "Captura", detail: "Pantalla simplificada con valores por defecto." },
-      { n: 5, title: "Búsqueda", detail: "Filtros alineados a cómo busca RR.HH." },
-    ],
-    artifacts: [
-      {
-        id: "esquema",
-        caption: "Esquema de índices antes y después.",
-        alt: "Comparación de esquema de índices antes y después",
-        aspect: "16/9",
-        tint: "accent",
-        kind: "diagram",
-      },
-      {
-        id: "captura",
-        caption: "Pantalla de captura simplificada.",
-        alt: "Pantalla de captura de documentos simplificada",
-        aspect: "4/3",
-        tint: "neutral",
-        kind: "image",
-      },
-      {
-        id: "busqueda",
-        caption: "Búsqueda por campos normalizados.",
-        alt: "Búsqueda por campos normalizados",
-        aspect: "4/3",
-        tint: "warm",
-        kind: "image",
-      },
-    ],
-    impact: [
-      { value: "−40%", label: "Campos de índice", note: "solo lo que realmente se busca" },
-      { value: "−55%", label: "Tiempo de captura", note: "pantalla simplificada" },
-      { value: "1", label: "Estándar de indexación", note: "valores normalizados" },
-    ],
-    learnings:
-      "Menos campos, mejor búsqueda: hay que indexar por lo que se busca, no por lo que existe.",
-    next: "Plantillas de captura por tipo documental y validaciones server-side.",
-    featured: false,
   },
 
   {
     slug: "digitrack",
     title: "DigiTrack",
     category: "Reporting / Visibilidad operativa",
-    valueProp: "Métricas en vivo de la operación de escaneo, conectadas al ERP.",
-    stack: ["ERP (conector)", "Capa de datos", "Dashboards", "BI"],
+    valueProp: "Convierte la operación de escaneo en indicadores en vivo para anticipar retrasos, medir productividad y decidir a tiempo.",
+    technologies: [
+      {
+        name: "Conector ERP",
+        category: "Integración",
+        description:
+          "Obtiene la actividad operativa desde la fuente de negocio para evitar reportes separados y consolidaciones manuales.",
+      },
+      {
+        name: "Capa de transformación",
+        category: "Procesamiento de datos",
+        description:
+          "Limpia, organiza y convierte los registros del ERP en métricas comparables por equipo, sede y usuario.",
+      },
+      {
+        name: "Modelo de indicadores",
+        category: "Analítica",
+        description:
+          "Estructura las reglas para medir avance, productividad, volumen procesado e incidencias con un criterio común.",
+      },
+      {
+        name: "Dashboards BI",
+        category: "Visualización",
+        description:
+          "Presenta la operación en vistas ejecutivas y de seguimiento para detectar desvíos y actuar con información reciente.",
+      },
+    ],
     year: "2025",
     status: "En producción",
     role: "Diseño del sistema de reportes e indicadores",
     problem:
       "El avance del escaneo se medía a destiempo y a mano; no se detectaban los retrasos hasta que ya eran un problema.",
     solution:
-      "Sistema de reporting conectado al ERP que muestra en tiempo real avance, productividad, volúmenes procesados e incidencias, desglosado por equipo, sede y usuario, para decidir con datos vivos.",
-    flow: [
-      { n: 1, title: "Conexión", detail: "Lectura de datos operativos del ERP." },
-      { n: 2, title: "Modelado", detail: "Indicadores: avance, productividad, volumen, incidencias." },
-      { n: 3, title: "Segmentación", detail: "Por equipo, sede y usuario." },
-      { n: 4, title: "Tablero", detail: "Dashboards en vivo con alertas de retraso." },
-      { n: 5, title: "Decisión", detail: "Reasignación y control con datos del momento." },
-    ],
-    artifacts: [
+      "Un sistema de reporting conectado al ERP transforma la actividad diaria en indicadores de avance, productividad, volumen e incidencias. La operación gana visibilidad por equipo, sede y usuario para corregir desvíos antes de que se conviertan en retrasos.",
+    features: [
       {
-        id: "tablero",
-        caption: "Tablero de avance por equipo y sede.",
-        alt: "Dashboard de avance de escaneo por equipo y sede",
-        aspect: "16/9",
-        tint: "accent",
-        kind: "image",
+        title: "Integración con el ERP",
+        description:
+          "La información operativa se obtiene desde el sistema de origen para mantener una única versión de los datos.",
       },
       {
-        id: "productividad",
-        caption: "Productividad por usuario.",
-        alt: "Gráfico de productividad por usuario",
-        aspect: "4/3",
-        tint: "cool",
-        kind: "image",
+        title: "Avance en tiempo real",
+        description:
+          "El tablero muestra cuánto se ha procesado y qué parte de la carga continúa pendiente.",
       },
       {
-        id: "volumenes",
-        caption: "Volúmenes procesados e incidencias.",
-        alt: "Reporte de volúmenes procesados e incidencias",
-        aspect: "4/3",
-        tint: "neutral",
-        kind: "image",
+        title: "Productividad segmentada",
+        description:
+          "Las métricas pueden analizarse por equipo, sede y usuario para identificar capacidad y oportunidades de mejora.",
+      },
+      {
+        title: "Control de incidencias",
+        description:
+          "Los desvíos dejan de estar ocultos en reportes tardíos y se incorporan al seguimiento diario.",
+      },
+      {
+        title: "Indicadores consistentes",
+        description:
+          "Las mismas reglas de cálculo se aplican a toda la operación para comparar resultados con confianza.",
+      },
+      {
+        title: "Decisiones oportunas",
+        description:
+          "Los responsables pueden reasignar carga y corregir retrasos antes de que afecten el cumplimiento.",
       },
     ],
-    impact: [
-      { value: "Tiempo real", label: "Visibilidad del avance", note: "antes se medía a destiempo y a mano" },
-      { value: "4", label: "Indicadores en vivo", note: "avance, productividad, volumen, incidencias" },
-      { value: "1", label: "Fuente única de métricas", note: "conectada al ERP" },
-    ],
-    learnings:
-      "Medir por equipo, sede y usuario convierte un número global en una palanca de gestión concreta.",
-    next: "Pronóstico de carga y alertas automáticas de desvío.",
+    artifacts: [],
     featured: true,
   },
 ];

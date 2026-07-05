@@ -11,7 +11,6 @@ export function Footer() {
       <div className="edge py-[var(--s-9,96px)]">
         <div className="grid gap-[var(--s-7,48px)] md:grid-cols-[1.4fr_1fr]">
           <div>
-            <p className="eyebrow mb-5">{site.availability}</p>
             <a
               href={`mailto:${site.email}`}
               className="link-underline font-display text-h3 text-ink"

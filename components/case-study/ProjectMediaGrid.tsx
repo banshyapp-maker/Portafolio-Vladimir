@@ -14,17 +14,21 @@ function ratioOf(aspect: string): number {
 }
 
 export function ProjectMediaGrid({ artifacts, seedBase }: ProjectMediaGridProps) {
-  if (artifacts.length === 0) return null;
+  const gallery = artifacts.slice(1);
+  if (gallery.length === 0) return null;
 
   return (
-    <section aria-label="Pantallas y artefactos" className="edge py-[var(--s-9,96px)]">
+    <section aria-label="Vistas del proyecto" className="edge py-[var(--s-10,128px)]">
       <Reveal className="mb-12">
-        <p className="eyebrow mb-3">Pantallas</p>
-        <h2 className="font-display text-h2 font-normal text-ink">Artefactos del sistema</h2>
+        <p className="eyebrow mb-3">Galería</p>
+        <h2 className="font-display text-h2 font-normal text-ink">Vistas del proyecto</h2>
+        <p className="mt-5 max-w-[54ch] text-lead text-ink-soft">
+          Pantallas y automatizaciones que forman parte de la solución.
+        </p>
       </Reveal>
 
       <div className="grid gap-x-[var(--col-gap,32px)] gap-y-14 md:grid-cols-2">
-        {artifacts.map((a, i) => {
+        {gallery.map((a, i) => {
           const ratio = ratioOf(a.aspect);
           // exact ratios carry the native width — big desktop captures need the
           // full row or their UI text lands at ~28% scale and turns illegible

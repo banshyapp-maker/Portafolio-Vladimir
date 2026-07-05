@@ -3,16 +3,16 @@
 export const hero = {
   eyebrow: "Application Engineer | Automation & AI Solutions",
   tagline:
-    "Automatizo lo repetitivo y ordeno lo que se pierde: documentos, facturas, datos. Lo aburrido lo hace el sistema; las decisiones las toma tu equipo.",
+    "Transformo procesos manuales en sistemas automáticos con IA y software diseñado para ahorrar tiempo, reducir errores y dar visibilidad a la operación.",
 };
 
 export const about = {
   eyebrow: "Sobre mí",
   snapshot:
-    "Trabajo en el punto donde un proceso manual se convierte en sistema: documentos que se archivan solos, facturas que se procesan sin digitación y datos que llegan limpios a un dashboard. Me interesa menos la herramienta de moda que una operación que no dependa de la memoria de una sola persona.",
+    "Me apasiona entender cómo funciona un proceso manual y encontrar la forma más efectiva de automatizarlo, ya sea con IA aplicada, RPA o el software que mejor resuelva la necesidad. Mi objetivo es convertir tareas repetitivas en operaciones más rápidas, confiables y fáciles de medir.",
   paragraphs: [
-    "Antes de tocar una línea de código entiendo el proceso real: quién captura la información, qué se aprueba, dónde se pierde tiempo buscando algo que ya existía. Ese diagnóstico es el que decide si el problema se resuelve con un mejor formulario, un pipeline de automatización o un archivador con los campos correctos.",
-    "De ahí salieron Arkivoo —un gestor documental que construí desde cero para archivar y encontrar cualquier documento por sus metadatos en segundos— y los pipelines de facturación que usan IA para extraer los datos de cada documento sin digitación manual. El resultado que persigo siempre es el mismo: menos reproceso, más control y una operación que se puede medir de verdad.",
+    "Antes de tocar una línea de código estudio el proceso real: quién captura la información, qué decisiones se toman, dónde aparecen los errores y qué tareas consumen tiempo sin aportar valor. Ese diagnóstico define si la solución necesita IA, RPA, una integración o una aplicación hecha a medida.",
+    "Así nacieron proyectos como Arkivoo y los pipelines de facturación automatizada. En cada caso busco el mismo resultado: eliminar trabajo repetitivo, conectar la información y darle al equipo una operación más clara, controlada y medible.",
   ],
   principles: [
     {

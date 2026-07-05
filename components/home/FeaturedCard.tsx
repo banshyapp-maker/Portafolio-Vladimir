@@ -129,12 +129,12 @@ export function FeaturedCard({ project, index }: { project: Project; index: numb
           <p className="mt-5 max-w-[42ch] text-lead text-ink-soft">{project.valueProp}</p>
 
           <div className="mt-7 flex flex-wrap items-center gap-2">
-            {project.stack.slice(0, 4).map((s) => (
+            {project.technologies.slice(0, 4).map((technology) => (
               <span
-                key={s}
+                key={technology.name}
                 className="border border-line px-2.5 py-1 font-mono text-[0.7rem] uppercase tracking-wider text-muted"
               >
-                {s}
+                {technology.name}
               </span>
             ))}
           </div>

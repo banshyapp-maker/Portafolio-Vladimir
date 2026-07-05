@@ -27,7 +27,7 @@ export function SelectedWork() {
           underline
           className="font-mono text-small uppercase tracking-[0.14em] text-ink"
         >
-          Ver todo el trabajo&nbsp;→
+          Ver todos los proyectos&nbsp;→
         </MagneticLink>
       </div>
     </section>

@@ -4,6 +4,7 @@ import { site } from "@/data/site";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Reveal } from "@/components/motion/Reveal";
 import { MagneticLink } from "@/components/motion/MagneticLink";
+import { ContactForm } from "@/components/contact/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contacto",
@@ -25,19 +26,18 @@ export default function ContactPage() {
         <p className="text-lead text-ink-soft">{contact.sub}</p>
       </Reveal>
 
-      <div className="mt-[var(--s-9,96px)] grid gap-x-[var(--col-gap,32px)] gap-y-12 border-t border-line pt-12 md:grid-cols-2">
-        <div>
-          <p className="eyebrow mb-5">Email</p>
-          <a
-            href={`mailto:${site.email}`}
-            className="link-underline font-display text-h3 text-ink"
-          >
-            {site.email}
-          </a>
+      <div className="mt-[var(--s-9,96px)] grid gap-x-[var(--col-gap,32px)] gap-y-16 border-t border-line pt-12 md:grid-cols-12">
+        <div className="md:col-span-7">
+          <ContactForm />
         </div>
 
-        <div>
-          <p className="eyebrow mb-5">En otros lugares</p>
+        <aside className="md:col-span-4 md:col-start-9">
+          <p className="eyebrow mb-5">Contacto directo</p>
+          <a href={`mailto:${site.email}`} className="link-underline font-display text-xl text-ink">
+            {site.email}
+          </a>
+
+          <p className="eyebrow mb-5 mt-12">También puedes encontrarme en</p>
           <ul className="space-y-3">
             {site.socials
               .filter((s) => s.label !== "Email")
@@ -54,7 +54,7 @@ export default function ContactPage() {
                 </li>
               ))}
           </ul>
-        </div>
+        </aside>
       </div>
 
       <p className="eyebrow mt-[var(--s-10,128px)] text-faint">
