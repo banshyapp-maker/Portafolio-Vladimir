@@ -14,18 +14,18 @@ export const about = {
     "Antes de tocar una línea de código estudio el proceso real: quién captura la información, qué decisiones se toman, dónde aparecen los errores y qué tareas consumen tiempo sin aportar valor. Ese diagnóstico define si la solución necesita IA, RPA, una integración o una aplicación hecha a medida.",
     "Así nacieron proyectos como Arkivoo y los pipelines de facturación automatizada. En cada caso busco el mismo resultado: eliminar trabajo repetitivo, conectar la información y darle al equipo una operación más clara, controlada y medible.",
   ],
-  principles: [
+  impactAreas: [
     {
-      title: "El proceso primero",
-      body: "Modelo el flujo real antes de la interfaz. La automatización solo aporta valor si el proceso está bien definido.",
+      title: "Automatización inteligente",
+      body: "Diseño flujos que eliminan tareas repetitivas, conectan herramientas y reservan la intervención humana para las decisiones importantes.",
     },
     {
-      title: "Menos fricción, menos error",
-      body: "Captura simple, valores validados y automatización donde el humano no agrega valor diferencial.",
+      title: "Software operativo",
+      body: "Construyo aplicaciones a medida para ordenar procesos, validar información y darle al equipo una operación clara y confiable.",
     },
     {
-      title: "Medible por diseño",
-      body: "Si no se puede ver en un tablero, no se puede gestionar. Los indicadores van desde el día uno.",
+      title: "Datos para decidir",
+      body: "Transformo la actividad diaria en indicadores visibles para detectar desvíos, medir resultados y actuar a tiempo.",
     },
   ],
 };

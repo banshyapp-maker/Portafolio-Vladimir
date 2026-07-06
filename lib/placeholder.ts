@@ -1,6 +1,6 @@
 /**
  * Deterministic, palette-constrained placeholder art.
- * The same seed always yields the same warm-bone gradient + ink accent,
+ * The same seed always yields the same dark gradient + cyan accent,
  * so layouts look designed before real screenshots exist.
  */
 
@@ -28,20 +28,21 @@ export function seedToPalette(seed: string, tint: Tint = "neutral"): Placeholder
   const base = 28 + (h % 22); // warm 28–50deg band (paper)
   const angle = 105 + (h % 70);
 
-  const warmFrom = `hsl(${base} 30% 93%)`;
-  const warmTo = `hsl(${base + 8} 26% 82%)`;
+  // ponytail: one dark palette fixes every project frame at the shared source.
+  const warmFrom = `hsl(${base} 18% 12%)`;
+  const warmTo = `hsl(${base + 8} 16% 6%)`;
 
   const palettes: Record<Tint, Pick<PlaceholderPalette, "from" | "to">> = {
     neutral: { from: warmFrom, to: warmTo },
-    warm: { from: `hsl(${base - 4} 38% 90%)`, to: `hsl(${base + 14} 34% 78%)` },
-    cool: { from: `hsl(${(base + 180) % 360} 14% 90%)`, to: `hsl(208 18% 80%)` },
-    accent: { from: warmFrom, to: `hsl(208 22% 74%)` },
+    warm: { from: `hsl(${base - 4} 22% 13%)`, to: `hsl(${base + 14} 20% 7%)` },
+    cool: { from: `hsl(${(base + 180) % 360} 18% 12%)`, to: `hsl(208 20% 6%)` },
+    accent: { from: warmFrom, to: `hsl(198 28% 8%)` },
   };
 
   return {
     ...palettes[tint],
-    ink: "#1a1916",
-    accent: "#2b3a4a",
+    ink: "#d7e1e1",
+    accent: "#54c4e8",
     angle,
   };
 }

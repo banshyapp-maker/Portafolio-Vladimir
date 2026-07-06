@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import type { Project } from "@/types";
+import { PlaceholderMedia } from "@/components/media/PlaceholderMedia";
 
 interface ProjectCardProps {
   project: Project;
@@ -12,6 +13,8 @@ interface ProjectCardProps {
 
 /** A single editorial index row in the Work list. */
 export function ProjectCard({ project, index, onEnter, onLeave }: ProjectCardProps) {
+  const cover = project.artifacts[0];
+
   return (
     <li className="border-b border-line">
       <Link
@@ -27,6 +30,20 @@ export function ProjectCard({ project, index, onEnter, onLeave }: ProjectCardPro
         <h2 className="font-display text-[clamp(2.2rem,5vw,4rem)] font-semibold uppercase leading-[0.92] text-ink transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] md:group-hover:translate-x-3 md:group-hover:text-accent-strong">
           {project.title}
         </h2>
+        {cover?.src && (
+          <div className="col-span-2 mt-3 md:hidden">
+            <PlaceholderMedia
+              seed={project.slug}
+              alt={cover.alt}
+              aspect="16/9"
+              tint={cover.tint}
+              kind={cover.kind}
+              src={cover.src}
+              fit="contain"
+              sizes="100vw"
+            />
+          </div>
+        )}
         <span className="col-start-2 font-mono text-caption uppercase tracking-[0.14em] text-muted md:col-start-3 md:self-center md:text-right">
           {project.category}
         </span>

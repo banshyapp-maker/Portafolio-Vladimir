@@ -10,11 +10,12 @@ export function AboutPreview() {
       <div className="screen-grid relative isolate min-h-[70svh] overflow-hidden">
         <div className="absolute inset-y-0 right-0 w-full md:w-[58%]">
           <Image
-            src="/images/foto-vladimir.jpg"
+            src="/images/foto-vladimir-sin-marca.png"
             alt="Vladimir Cornejo"
             fill
+            quality={95}
             sizes="(max-width: 768px) 100vw, 58vw"
-            className="object-cover object-[62%_center] grayscale"
+            className="object-contain object-right-bottom grayscale"
           />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,#0b1013_0%,rgba(11,16,19,.72)_28%,rgba(11,16,19,.12)_68%,rgba(11,16,19,.48)_100%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(0deg,#0b1013_0%,transparent_55%)] md:hidden" />

@@ -31,6 +31,7 @@ function usePanamaTime() {
 export function Hero() {
   const reduced = useReducedMotion();
   const time = usePanamaTime();
+  const [videoReady, setVideoReady] = useState(false);
 
   return (
     <section aria-labelledby="hero-title" className="relative min-h-svh w-full overflow-hidden bg-bg-deep">
@@ -57,10 +58,10 @@ export function Hero() {
               muted
               playsInline
               preload="auto"
-              poster="/images/hero-video-poster.jpeg"
+              onCanPlay={() => setVideoReady(true)}
               aria-hidden="true"
               tabIndex={-1}
-              className="absolute inset-0 h-full w-full object-cover object-center"
+              className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-300 ${videoReady ? "opacity-100" : "opacity-0"}`}
             >
               <source src="/videos/hero-background.mp4?v=desktop" type="video/mp4" />
             </video>
