@@ -16,16 +16,37 @@ const barlow = Barlow_Condensed({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://portafolio-vladimir-cornejo.vercel.app"),
   title: {
     default: `${site.name} — ${site.role}`,
     template: `%s — ${site.name}`,
   },
   description: site.shortBio,
+  icons: {
+    icon: [{ url: "/images/Foto-circular.png?v=2", type: "image/png" }],
+    apple: [{ url: "/images/Foto-circular.png?v=2", type: "image/png" }],
+  },
   openGraph: {
     title: `${site.name} — ${site.role}`,
     description: site.shortBio,
+    url: "/",
+    siteName: site.name,
     type: "website",
     locale: "es_ES",
+    images: [
+      {
+        url: "/images/Foto-circular.png?v=2",
+        width: 1086,
+        height: 1251,
+        alt: "Retrato profesional de Vladimir Cornejo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} — ${site.role}`,
+    description: site.shortBio,
+    images: ["/images/Foto-circular.png?v=2"],
   },
 };
 
