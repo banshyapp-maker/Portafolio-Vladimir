@@ -10,7 +10,6 @@ import {
 } from "react";
 import { usePathname } from "next/navigation";
 import Lenis from "lenis";
-import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 
 interface LenisAPI {
@@ -27,9 +26,8 @@ export function useLenis() {
 }
 
 /**
- * Owns the single Lenis instance and bridges it to GSAP's ticker so Lenis
- * and ScrollTrigger share one RAF loop. Falls back to native scrolling when
- * the user prefers reduced motion.
+ * Owns the single Lenis instance. Falls back to native scrolling when the
+ * user prefers reduced motion.
  */
 export function LenisProvider({ children }: { children: ReactNode }) {
   const reduced = useReducedMotion();
@@ -40,32 +38,23 @@ export function LenisProvider({ children }: { children: ReactNode }) {
     if (reduced) return; // native scroll, no smoothing
 
     const lenis = new Lenis({
+      autoRaf: true,
       duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // expo-out
       smoothWheel: true,
     });
     lenisRef.current = lenis;
 
-    lenis.on("scroll", ScrollTrigger.update);
-    const raf = (time: number) => lenis.raf(time * 1000); // gsap secs -> lenis ms
-    gsap.ticker.add(raf);
-    gsap.ticker.lagSmoothing(0);
-
     return () => {
-      gsap.ticker.remove(raf);
-      lenis.off("scroll", ScrollTrigger.update);
       lenis.destroy();
       lenisRef.current = null;
     };
   }, [reduced]);
 
-  // On route change: jump to top and refresh triggers after the new page paints.
+  // On route change: jump to top after the new page paints.
   useEffect(() => {
     if (lenisRef.current) lenisRef.current.scrollTo(0, { immediate: true });
     else window.scrollTo(0, 0);
-
-    const id = window.requestAnimationFrame(() => ScrollTrigger.refresh());
-    return () => window.cancelAnimationFrame(id);
   }, [pathname]);
 
   const api = useMemo<LenisAPI>(

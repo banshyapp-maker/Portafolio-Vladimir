@@ -1,4 +1,4 @@
-import { featuredProjects } from "@/data/projects";
+import { featuredProjectSummaries } from "@/data/projects";
 import { FeaturedCard } from "./FeaturedCard";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Reveal } from "@/components/motion/Reveal";
@@ -20,7 +20,7 @@ export function SelectedWork() {
       </Reveal>
 
       <div className="flex flex-col gap-16 lg:gap-24">
-        {featuredProjects.map((project, i) => (
+        {featuredProjectSummaries.map((project, i) => (
           <FeaturedCard key={project.slug} project={project} index={i} />
         ))}
       </div>

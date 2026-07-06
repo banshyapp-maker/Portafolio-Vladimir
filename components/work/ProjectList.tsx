@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
-import type { Project } from "@/types";
+import type { ProjectSummary } from "@/data/projects";
 import { ProjectCard } from "./ProjectCard";
 import { PlaceholderMedia } from "@/components/media/PlaceholderMedia";
 import { useReducedMotion } from "@/lib/useReducedMotion";
@@ -12,7 +12,7 @@ import { EASE_OUT } from "@/lib/motion";
  * Editorial index of projects with a single preview thumbnail that follows
  * the cursor (desktop only). On touch / reduced motion it's a plain list.
  */
-export function ProjectList({ projects }: { projects: Project[] }) {
+export function ProjectList({ projects }: { projects: ProjectSummary[] }) {
   const reduced = useReducedMotion();
   const [active, setActive] = useState<number | null>(null);
   // Keeps the last hovered project visible while the preview fades out.
@@ -60,9 +60,9 @@ export function ProjectList({ projects }: { projects: Project[] }) {
             alt=""
             aspect="4/3"
             tint="accent"
-            kind={preview.artifacts[0]?.kind ?? "image"}
-            src={preview.artifacts[0]?.src}
-            fit={preview.artifacts[0]?.src ? "contain" : "cover"}
+            kind={preview.cover?.kind ?? "image"}
+            src={preview.cover?.src}
+            fit={preview.cover?.src ? "contain" : "cover"}
           />
         </motion.div>
       )}

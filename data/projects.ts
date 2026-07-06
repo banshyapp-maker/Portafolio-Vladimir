@@ -358,6 +358,25 @@ export const allProjects = projects;
 
 export const featuredProjects = projects.filter((p) => p.featured);
 
+function toProjectSummary(project: Project) {
+  return {
+    slug: project.slug,
+    title: project.title,
+    category: project.category,
+    valueProp: project.valueProp,
+    technologyNames: project.technologies.slice(0, 4).map(({ name }) => name),
+    year: project.year,
+    status: project.status,
+    cover: project.artifacts.at(0),
+  };
+}
+
+export type ProjectSummary = ReturnType<typeof toProjectSummary>;
+
+export const allProjectSummaries = projects.map(toProjectSummary);
+
+export const featuredProjectSummaries = projects.filter((p) => p.featured).map(toProjectSummary);
+
 export function getProject(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
 }

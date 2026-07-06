@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
-import type { Project } from "@/types";
+import type { ProjectSummary } from "@/data/projects";
 import { PlaceholderMedia } from "@/components/media/PlaceholderMedia";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 import { EASE_OUT } from "@/lib/motion";
@@ -14,7 +14,7 @@ import { cn } from "@/lib/cn";
  * an accent-treated layer wipes in (clip-path), a cursor hint follows the
  * pointer, the title underline draws, and the category nudges across.
  */
-export function FeaturedCard({ project, index }: { project: Project; index: number }) {
+export function FeaturedCard({ project, index }: { project: ProjectSummary; index: number }) {
   const reduced = useReducedMotion();
   const flip = index % 2 === 1;
   const [hover, setHover] = useState(false);
@@ -32,7 +32,7 @@ export function FeaturedCard({ project, index }: { project: Project; index: numb
   }
 
   const idx = String(index + 1).padStart(2, "0");
-  const cover = project.artifacts[0];
+  const cover = project.cover;
   const mediaKind = cover?.kind ?? "image";
   const mediaFit = cover?.src ? "contain" : "cover";
 
@@ -129,12 +129,12 @@ export function FeaturedCard({ project, index }: { project: Project; index: numb
           <p className="mt-5 max-w-[42ch] text-small leading-relaxed text-ink-soft">{project.valueProp}</p>
 
           <div className="mt-7 flex flex-wrap items-center gap-2">
-            {project.technologies.slice(0, 4).map((technology) => (
+            {project.technologyNames.map((technology) => (
               <span
-                key={technology.name}
+                key={technology}
                 className="border border-line px-2.5 py-1 font-mono text-[0.7rem] uppercase tracking-wider text-muted"
               >
-                {technology.name}
+                {technology}
               </span>
             ))}
           </div>

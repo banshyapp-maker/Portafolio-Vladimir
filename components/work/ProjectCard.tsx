@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import type { Project } from "@/types";
+import type { ProjectSummary } from "@/data/projects";
 import { PlaceholderMedia } from "@/components/media/PlaceholderMedia";
 
 interface ProjectCardProps {
-  project: Project;
+  project: ProjectSummary;
   index: number;
   onEnter: () => void;
   onLeave: () => void;
@@ -13,7 +13,7 @@ interface ProjectCardProps {
 
 /** A single editorial index row in the Work list. */
 export function ProjectCard({ project, index, onEnter, onLeave }: ProjectCardProps) {
-  const cover = project.artifacts[0];
+  const cover = project.cover;
 
   return (
     <li className="border-b border-line">

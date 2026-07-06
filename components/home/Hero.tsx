@@ -42,16 +42,15 @@ export function Hero() {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.4, ease: EASE_OUT }}
         >
-          {reduced ? (
-            <Image
-              src="/images/hero-video-poster.jpeg"
-              alt="Código y métricas digitales superpuestos sobre un teclado"
-              fill
-              preload
-              sizes="100vw"
-              className="object-cover object-center"
-            />
-          ) : (
+          <Image
+            src="/images/hero-video-poster.jpeg"
+            alt="Código y métricas digitales superpuestos sobre un teclado"
+            fill
+            preload
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          {!reduced && (
             <video
               autoPlay
               loop

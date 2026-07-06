@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { allProjects } from "@/data/projects";
+import { allProjectSummaries } from "@/data/projects";
 import { ProjectList } from "@/components/work/ProjectList";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Reveal } from "@/components/motion/Reveal";
@@ -33,7 +33,7 @@ export default function WorkPage() {
           </Reveal>
         </header>
 
-        <ProjectList projects={allProjects} />
+        <ProjectList projects={allProjectSummaries} />
       </div>
     </div>
   );
