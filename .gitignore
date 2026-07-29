@@ -19,6 +19,7 @@
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
@@ -38,6 +39,10 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# sites/cloudflare local build state
+.vinext
+.wrangler
 
 # typescript
 *.tsbuildinfo
