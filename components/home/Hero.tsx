@@ -46,6 +46,7 @@ export function Hero() {
             src="/images/hero-video-poster.jpeg"
             alt="Código y métricas digitales superpuestos sobre un teclado"
             fill
+            unoptimized
             preload
             sizes="100vw"
             className="object-cover object-center"

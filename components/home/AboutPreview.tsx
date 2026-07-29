@@ -13,6 +13,7 @@ export function AboutPreview() {
             src="/images/foto-vladimir-sin-marca.png"
             alt="Vladimir Cornejo"
             fill
+            unoptimized
             quality={95}
             sizes="(max-width: 768px) 100vw, 58vw"
             className="object-contain object-right-bottom grayscale"

@@ -44,6 +44,7 @@ export default function AboutPage() {
               src="/images/foto-vladimir-sin-marca.png"
               alt={`${site.name} — retrato profesional`}
               fill
+              unoptimized
               preload
               quality={95}
               sizes="(max-width: 768px) 100vw, 56vw"

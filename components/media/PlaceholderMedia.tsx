@@ -109,6 +109,7 @@ export function PlaceholderMedia({
                 src={src}
                 alt={alt}
                 fill
+                unoptimized
                 quality={95}
                 sizes={sizes}
                 preload={preload}
@@ -121,6 +122,7 @@ export function PlaceholderMedia({
             src={src}
             alt={alt}
             fill
+            unoptimized
             quality={95}
             placeholder="blur"
             blurDataURL={blurDataURL(seed, tint)}
