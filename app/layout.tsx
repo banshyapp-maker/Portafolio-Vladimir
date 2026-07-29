@@ -16,7 +16,7 @@ const barlow = Barlow_Condensed({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://portafolio-vladimir-cornejo.vercel.app"),
+  metadataBase: new URL("https://portafolio-vladimir.veronicagil2402.chatgpt.site"),
   title: {
     default: `${site.name} — ${site.role}`,
     template: `%s — ${site.name}`,
