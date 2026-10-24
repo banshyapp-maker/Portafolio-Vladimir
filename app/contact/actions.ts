@@ -28,7 +28,8 @@ export async function sendContact(
   const phone = getField(formData, "phone");
   const description = getField(formData, "description");
 
-  const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  // getField already guarantees a string; cap length before the regex runs.
+  const validEmail = email.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const invalid =
     firstName.length < 2 ||
     firstName.length > 80 ||
